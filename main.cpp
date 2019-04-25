@@ -38,9 +38,21 @@ float cosy(int R, int l, int betta)
 };
 
 
-float E(int R, int l, int betta)
+float E0(int R, int l, int betta)
 {
-    return ( -(((w)/2*Pi*R)*(1/tan(betta/2))*delta(t)) )
+    return ( -((w)/2*Pi*R)*(1/tan(betta/2)) );
+};
+
+
+float E1(int R, int l, int betta)
+{
+    return ( -(2*(cosy(R,l,betta)/sin(betta * tacos))) );
+};
+
+
+float E2(int R, int l, int betta)
+{
+    return ( tan((betta * tacos)/2) );
 };
 
 
