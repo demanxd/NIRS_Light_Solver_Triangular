@@ -90,6 +90,9 @@ void Greetings()
     for (int i = 0; i < 5; ++i)
         std::cout << " ";
     std::cout << "Programm for solving field of triangular antennas parameters" << std::endl;
+    for (int i = 0; i < 29; ++i)
+        std::cout << " ";
+    std::cout << "Version 0.01" <<std::endl;
     for (int i = 0; i < 27; ++i)
         std::cout << " ";
     std::cout << "You are welcome!" << std::endl;
@@ -101,14 +104,30 @@ void Greetings()
 }
 
 
+int inputNubers()
+{
+    int Nr, Nl, Nb;                 //N for any cases
+    std::cout << "Please, input number of R" << std::endl;
+    std::cin >> Nr;
+    std::cout << "Please, input number of l" << std::endl;
+    std::cin >> Nl;
+    std::cout << "Please, input number of betta" << std::endl;
+    std::cin >> Nb;
+
+    return Nr+Nl+Nb;
+}
+
 
 
 
 
 int main()
 {
-    //Greetings();
-    //int R, l, betta;
-    std::cout << "Please, input" << std::endl;
+    Greetings();
+    int R, l, betta;
+    int Ns = inputNubers();                         //N summary
+
+
+
     return 0;
 }
