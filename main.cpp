@@ -7,28 +7,56 @@ const static float c = 3 * pow(10,8);
 const static float tacos = Pi / 180;                //some mexicans
 
 
-float p()
-{
 
-};
-
-
-float z(int betta)
-{
-   return p() * cos(betta * tacos);
-};
-
-
-///what about tau??
-float t(float tau, int R, int betta)
-{
-    return tau + z(betta)/c + R/c;
-};
 
 
 float Rs(int R, int l, int betta)
 {
     return sqrt(pow(R,2) + pow(l,2) - 2*R*l*cos(betta * tacos));
+};
+
+
+float tau0(int R, int l, int betta)
+{
+    return (-R/(c * (1 + cos(betta * tacos))));
+}
+
+
+float tau1(int R, int l, int betta)
+{
+    return ((-R/c - l*cos(betta * tacos))/(1-c*cos(betta * tacos)));
+}
+
+
+///what about tau??
+float t00(int R, int l, int betta)
+{
+    return tau0(R, l, betta);
+};
+
+float t01(int R, int l, int betta)
+{
+    return tau1(R, l, betta);
+};
+
+float t10(int R, int l, int betta)
+{
+    return tau0(R, l, betta) + ((1/c)*(l + sqrt(pow(R,2)+pow(l,2)-2*R*l*cos(betta * tacos))-R));
+};
+
+float t11(int R, int l, int betta)
+{
+    return tau1(R,l,betta) + ((1/c)*(l + sqrt(pow(R,2)+pow(l,2)-2*R*l*cos(betta * tacos))-R));
+};
+
+float t20(int R, int l, int betta)
+{
+    return tau0(R, l, betta) + ((1/c)*(l+Rs(R, l, betta)));
+};
+
+float t21(int R, int l, int betta)
+{
+    return tau1(R,l,betta) + ((1/c)*(l+Rs(R, l, betta)));
 };
 
 
