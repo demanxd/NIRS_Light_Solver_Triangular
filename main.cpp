@@ -92,7 +92,7 @@ void Greetings()
     std::cout << "Programm for solving field of triangular antennas parameters" << std::endl;
     for (int i = 0; i < 29; ++i)
         std::cout << " ";
-    std::cout << "Version 0.01" <<std::endl;
+    std::cout << "Version 0.02" <<std::endl;
     for (int i = 0; i < 27; ++i)
         std::cout << " ";
     std::cout << "You are welcome!" << std::endl;
@@ -104,15 +104,41 @@ void Greetings()
 }
 
 
+void inputVariables(int Nr, int Nl, int Nb)
+{
+    int R[Nr], l[Nl], betta[Nb];
+    std::cout << "Please, input your " << Nr << " values for R" << std::endl;
+    for (int i = 0; i < Nr; ++i)
+    {
+        std::cout << i+1 << ":       _:";
+        std::cin >> R[i];
+    }
+    std::cout << "Please, input your " << Nl << " values for l" << std::endl;
+    for (int i = 0; i < Nl; ++i)
+    {
+        std::cout << i+1 << ":       _:";
+        std::cin >> l[i];
+    }
+    std::cout << "Please, input your " << Nb << " values for betta angle" << std::endl;
+    for (int i = 0; i < Nb; ++i)
+    {
+        std::cout << i+1 << ":       _:";
+        std::cin >> betta[i];
+    }
+}
+
+
 int inputNubers()
 {
     int Nr, Nl, Nb;                 //N for any cases
     std::cout << "Please, input number of R" << std::endl;
     std::cin >> Nr;
-    std::cout << "Please, input number of l" << std::endl;
+    std::cout << "\nPlease, input number of l" << std::endl;
     std::cin >> Nl;
-    std::cout << "Please, input number of betta" << std::endl;
+    std::cout << "\nPlease, input number of betta" << std::endl;
     std::cin >> Nb;
+
+    inputVariables(Nr, Nl, Nb);
 
     return Nr+Nl+Nb;
 }
@@ -124,9 +150,7 @@ int inputNubers()
 int main()
 {
     Greetings();
-    int R, l, betta;
     int Ns = inputNubers();                         //N summary
-
 
 
     return 0;
