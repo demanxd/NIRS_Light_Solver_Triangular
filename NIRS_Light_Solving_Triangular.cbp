@@ -32,7 +32,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="auxiliary_funcs.h" />
+		<Unit filename="error_lib.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="math_func.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />
