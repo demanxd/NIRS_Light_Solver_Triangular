@@ -3,8 +3,11 @@
 
 #pragma once
 
+#include "structs.h"
 #include "math_func.h"
 #include "auxiliary_funcs.h"
+
+#include <cstring>
 
 
 
@@ -18,5 +21,12 @@ bool errorCounts(Nvalues Nss)
     }
     else
         return false;
+}
+
+void errorFormula(std::string name)
+{
+    std::cout << "Error!\n------\nError number 0001\n------" << std::endl;
+    std::cout << "In formula ||" << name << "|| no errors" << std::endl;
+    WaitingEnter();
 }
 #endif // ERROR_LIB_H_INCLUDED

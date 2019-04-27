@@ -3,12 +3,13 @@
 #pragma once
 
 
-struct Nvalues
-{
-    int Nr;
-    int Nl;
-    int Nb;
-};
+#include "structs.h"
+#include <cstring>
+#include "error_lib.h"
+
+std::string name;
+
+
 
 
 const static float Pi = 3.141592653589793;
@@ -85,6 +86,35 @@ float E1(int R, int l, int betta)
 float E2(int R, int l, int betta)
 {
     return ( tan((betta * tacos)/2) );
+};
+
+///evaluate tau
+void evalTau(int R, int l, int betta)
+{
+    t00(R, l, betta);
+    t01(R, l, betta);
+    t10(R, l, betta);
+    t11(R, l, betta);
+    t20(R, l, betta);
+    t21(R, l, betta);
+
+};
+
+///evaluate E
+void evalE(int R, int l, int betta)
+{
+    E0(R, l, betta);
+    E1(R, l, betta);
+    E2(R, l, betta);
+};
+
+///evaluate start
+void startEvaluate(int R, int l, int betta)
+{
+    evalTau(R, l, betta);
+    evalE(R, l, betta);
+    //name = "startEvaluate";
+    //errorFormula(name);
 };
 
 #endif // MATH_FUNC_H_INCLUDED

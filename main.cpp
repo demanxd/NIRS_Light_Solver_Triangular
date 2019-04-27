@@ -2,18 +2,7 @@
 #include <cmath>
 #include "math_func.h"
 #include "error_lib.h"
-
-
-
-
-
-
-
-
-
-
-///Greetings
-
+#include "structs.h"
 
 
 void inputVariables(Nvalues &Nss, int *R, int *l, int *betta)
@@ -53,9 +42,6 @@ int inputNubers(Nvalues &Nss)
 }
 
 
-
-
-
 int main()
 {
     Greetings();
@@ -67,6 +53,14 @@ int main()
 
     int R[Nss.Nr], l[Nss.Nl], betta[Nss.Nb];
     inputVariables(Nss, R,l,betta);
+
+
+    for (int i = 0; i < Nss.Nr; ++i)
+        for (int j = 0; j < Nss.Nl; ++j)
+            for (int k = 0; k < Nss.Nb; ++k)
+            {
+                startEvaluate(R[i],l[j],betta[k]);
+            }
 
     return 0;
 }
