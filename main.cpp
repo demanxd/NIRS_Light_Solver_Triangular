@@ -6,7 +6,12 @@ const static float w = 120 * Pi;
 const static float c = 3 * pow(10,8);
 const static float tacos = Pi / 180;                //some mexicans
 
-
+struct Nvalues
+{
+    int Nr;
+    int Nl;
+    int Nb;
+};
 
 
 ///R'
@@ -92,7 +97,7 @@ void Greetings()
     std::cout << "Programm for solving field of triangular antennas parameters" << std::endl;
     for (int i = 0; i < 29; ++i)
         std::cout << " ";
-    std::cout << "Version 0.02" <<std::endl;
+    std::cout << "Version 0.03" <<std::endl;
     for (int i = 0; i < 27; ++i)
         std::cout << " ";
     std::cout << "You are welcome!" << std::endl;
@@ -104,23 +109,23 @@ void Greetings()
 }
 
 
-void inputVariables(int Nr, int Nl, int Nb)
+void inputVariables(Nvalues &Nss, int *R, int *l, int *betta)
 {
-    int R[Nr], l[Nl], betta[Nb];
-    std::cout << "Please, input your " << Nr << " values for R" << std::endl;
-    for (int i = 0; i < Nr; ++i)
+    //int R[Nss.Nr], l[Nss.Nl], betta[Nss.Nb];
+    std::cout << "Please, input your " << Nss.Nr << " values for R" << std::endl;
+    for (int i = 0; i < Nss.Nr; ++i)
     {
         std::cout << i+1 << ":       _:";
         std::cin >> R[i];
     }
-    std::cout << "Please, input your " << Nl << " values for l" << std::endl;
-    for (int i = 0; i < Nl; ++i)
+    std::cout << "Please, input your " << Nss.Nl << " values for l" << std::endl;
+    for (int i = 0; i < Nss.Nl; ++i)
     {
         std::cout << i+1 << ":       _:";
         std::cin >> l[i];
     }
-    std::cout << "Please, input your " << Nb << " values for betta angle" << std::endl;
-    for (int i = 0; i < Nb; ++i)
+    std::cout << "Please, input your " << Nss.Nb << " values for betta angle" << std::endl;
+    for (int i = 0; i < Nss.Nb; ++i)
     {
         std::cout << i+1 << ":       _:";
         std::cin >> betta[i];
@@ -128,19 +133,16 @@ void inputVariables(int Nr, int Nl, int Nb)
 }
 
 
-int inputNubers()
+int inputNubers(Nvalues &Nss)
 {
-    int Nr, Nl, Nb;                 //N for any cases
     std::cout << "Please, input number of R" << std::endl;
-    std::cin >> Nr;
+    std::cin >> Nss.Nr;
     std::cout << "\nPlease, input number of l" << std::endl;
-    std::cin >> Nl;
+    std::cin >> Nss.Nl;
     std::cout << "\nPlease, input number of betta" << std::endl;
-    std::cin >> Nb;
+    std::cin >> Nss.Nb;
 
-    inputVariables(Nr, Nl, Nb);
-
-    return Nr+Nl+Nb;
+    return Nss.Nr+Nss.Nl+Nss.Nb;
 }
 
 
@@ -150,8 +152,11 @@ int inputNubers()
 int main()
 {
     Greetings();
-    int Ns = inputNubers();                         //N summary
+    Nvalues Nss;
+    int Ns = inputNubers(Nss);                         //N summary
 
+    int R[Nss.Nr], l[Nss.Nl], betta[Nss.Nb];
+    inputVariables(Nss, R,l,betta);
 
     return 0;
 }
