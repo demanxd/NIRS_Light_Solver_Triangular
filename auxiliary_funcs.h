@@ -22,7 +22,7 @@ void Greetings()
     std::cout << "Programm for solving field of triangular antennas parameters" << std::endl;
     for (int i = 0; i < 29; ++i)
         std::cout << " ";
-    std::cout << "Version 0.04" <<std::endl;
+    std::cout << "Version 1.00" <<std::endl;
     for (int i = 0; i < 27; ++i)
         std::cout << " ";
     std::cout << "You are welcome!" << std::endl;
@@ -32,5 +32,10 @@ void Greetings()
         std::cout << "\n";
     std::cout << std::endl;
 };
+
+void outputEqu(std::string name, float equ)
+{
+    std::cout << name << ":....  :"  << equ << std::endl;
+}
 
 #endif // AUXILIARY_FUNCS_H_INCLUDED

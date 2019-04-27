@@ -6,6 +6,7 @@
 #include "structs.h"
 #include <cstring>
 #include "error_lib.h"
+#include "auxiliary_funcs.h"
 
 std::string name;
 
@@ -26,44 +27,62 @@ float Rs(int R, int l, int betta)
 ///tau
 float tau0(int R, int l, int betta)
 {
-    return (-R/(c * (1 + cos(betta * tacos))));
+    return -R/(c * (1 + cos(betta * tacos)));
 }
 //
 float tau1(int R, int l, int betta)
 {
-    return ((-R/c - l*cos(betta * tacos))/(1-c*cos(betta * tacos)));
+    return (-R/c - l*cos(betta * tacos))/(1-c*cos(betta * tacos));
 }
 
 
-///tau final
+///tau finalx
 float t00(int R, int l, int betta)
 {
-    return tau0(R, l, betta);
+    float tau = tau0(R, l, betta);
+    //name = "tau0.0";
+    //outputEqu(name, tau);
+    return tau;
 };
 //
 float t01(int R, int l, int betta)
 {
-    return tau1(R, l, betta);
+    float tau = tau1(R, l, betta);
+    //name = "tau0.1";
+    //outputEqu(name, tau);
+    return tau;
 };
 //
 float t10(int R, int l, int betta)
 {
-    return tau0(R, l, betta) + ((1/c)*(l + sqrt(pow(R,2)+pow(l,2)-2*R*l*cos(betta * tacos))-R));
+    float tau = tau0(R, l, betta) + ((1/c)*(l + sqrt(pow(R,2)+pow(l,2)-2*R*l*cos(betta * tacos))-R));
+    //name = "tau1.0";
+    //outputEqu(name, tau);
+    return tau;
 };
 //
 float t11(int R, int l, int betta)
 {
-    return tau1(R,l,betta) + ((1/c)*(l + sqrt(pow(R,2)+pow(l,2)-2*R*l*cos(betta * tacos))-R));
+    float tau = tau1(R, l, betta) + ((1/c)*(l + sqrt(pow(R,2)+pow(l,2)-2*R*l*cos(betta * tacos))-R));
+    //name = "tau1.1";
+    //outputEqu(name, tau);
+    return tau;
 };
 //
 float t20(int R, int l, int betta)
 {
-    return tau0(R, l, betta) + ((1/c)*(l+Rs(R, l, betta)));
+    float tau = tau0(R, l, betta) + ((1/c)*(l+Rs(R, l, betta)));
+    //name = "tau2.0";
+    //outputEqu(name, tau);
+    return tau;
 };
 //
 float t21(int R, int l, int betta)
 {
-    return tau1(R,l,betta) + ((1/c)*(l+Rs(R, l, betta)));
+    float tau = tau1(R, l, betta) + ((1/c)*(l+Rs(R, l, betta)));
+    //name = "tau2.1";
+    //outputEqu(name, tau);
+    return tau;
 };
 
 ///cos gamma
@@ -91,21 +110,31 @@ float E2(int R, int l, int betta)
 ///evaluate tau
 void evalTau(int R, int l, int betta)
 {
-    t00(R, l, betta);
-    t01(R, l, betta);
-    t10(R, l, betta);
-    t11(R, l, betta);
-    t20(R, l, betta);
-    t21(R, l, betta);
+    name = "tau0.0";
+    outputEqu(name, t00(R, l, betta));
+    name = "tau0.1";
+    outputEqu(name, t01(R, l, betta));
+    name = "tau1.0";
+    outputEqu(name, t10(R, l, betta));
+    name = "tau1.1";
+    outputEqu(name, t11(R, l, betta));
+    name = "tau2.0";
+    outputEqu(name, t20(R, l, betta));
+    name = "tau2.1";
+    outputEqu(name, t21(R, l, betta));
+
 
 };
 
 ///evaluate E
 void evalE(int R, int l, int betta)
 {
-    E0(R, l, betta);
-    E1(R, l, betta);
-    E2(R, l, betta);
+    name = "E0";
+    outputEqu(name, E0(R, l, betta));
+    name = "E1";
+    outputEqu(name, E1(R, l, betta));
+    name = "E2";
+    outputEqu(name, E2(R, l, betta));
 };
 
 ///evaluate start
@@ -113,8 +142,6 @@ void startEvaluate(int R, int l, int betta)
 {
     evalTau(R, l, betta);
     evalE(R, l, betta);
-    //name = "startEvaluate";
-    //errorFormula(name);
 };
 
 #endif // MATH_FUNC_H_INCLUDED
