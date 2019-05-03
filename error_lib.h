@@ -25,7 +25,7 @@ bool errorCounts(Nvalues Nss)
 
 void errorFormula(std::string name)
 {
-    std::cout << "Error!\n------\nError number 0001\n------" << std::endl;
+    std::cout << "Error!\n------\nError number 1001\n------" << std::endl;
     std::cout << "In formula ||" << name << "|| no errors" << std::endl;
     WaitingEnter();
 }

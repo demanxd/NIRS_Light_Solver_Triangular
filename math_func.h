@@ -108,29 +108,29 @@ float E2(float R, float l, int betta)
 };
 
 ///evaluate tau
-void evalTau(float R, float l, int betta, SolvedData Data)
+void evalTau(float R, float l, int betta, SolvedData *Data)
 {
-    Data.tau[0] = t00(R, l, betta);
-    Data.tau[1] = t01(R, l, betta);
-    Data.tau[2] = t10(R, l, betta);
-    Data.tau[3] = t11(R, l, betta);
-    Data.tau[4] = t20(R, l, betta);
-    Data.tau[5] = t21(R, l, betta);
+    Data->tau[0] = t00(R, l, betta);
+    Data->tau[1] = t01(R, l, betta);
+    Data->tau[2] = t10(R, l, betta);
+    Data->tau[3] = t11(R, l, betta);
+    Data->tau[4] = t20(R, l, betta);
+    Data->tau[5] = t21(R, l, betta);
 };
 
 ///evaluate E
-void evalE(float R, float l, int betta, SolvedData Data)
+void evalE(float R, float l, int betta, SolvedData *Data)
 {
-    Data.E[0] = E0(R, l, betta);
-    Data.E[1] = E0(R, l, betta);
-    Data.E[2] = E1(R, l, betta);
-    Data.E[3] = E1(R, l, betta);
-    Data.E[4] = E2(R, l, betta);
-    Data.E[5] = E2(R, l, betta);
+    Data->E[0] = E0(R, l, betta);
+    Data->E[1] = E0(R, l, betta);
+    Data->E[2] = E1(R, l, betta);
+    Data->E[3] = E1(R, l, betta);
+    Data->E[4] = E2(R, l, betta);
+    Data->E[5] = E2(R, l, betta);
 };
 
 ///evaluate start
-void startEvaluate(float R, float l, int betta, SolvedData Data)
+void startEvaluate(float R, float l, int betta, SolvedData *Data)
 {
     evalTau(R, l, betta, Data);
     evalE(R, l, betta, Data);

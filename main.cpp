@@ -24,9 +24,12 @@ int main()
             for (int k = 0; k < Nss.Nb; ++k)
             {
                 ++n_el;
-                startEvaluate(R[i],l[j],betta[k],Data[n_el]);
+                startEvaluate(R[i],l[j],betta[k], &Data[n_el]);
                 outputConsole(Data[n_el]);
+                outputFile(Data[n_el], R[i], l[j], betta[k]);
             }
+
+
 
     WaitingEnter();
     return 0;
