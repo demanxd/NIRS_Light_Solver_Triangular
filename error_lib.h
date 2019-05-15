@@ -11,7 +11,7 @@
 
 
 
-bool errorCounts(Nvalues Nss)
+bool CountsError(Nvalues Nss)
 {
     if ((Nss.Nr == 0)||(Nss.Nl == 0)||(Nss.Nb == 0))
     {
@@ -21,12 +21,17 @@ bool errorCounts(Nvalues Nss)
     }
     else
         return false;
-}
+};
 
-void errorFormula(std::string name)
+void FormulaError(std::string name)
 {
     std::cout << "Error!\n------\nError number 1001\n------" << std::endl;
     std::cout << "In formula ||" << name << "|| no errors" << std::endl;
     WaitingEnter();
-}
+};
+
+void ChangeError()
+{
+    std::cout << "Error Input" << std::endl;
+};
 #endif // ERROR_LIB_H_INCLUDED

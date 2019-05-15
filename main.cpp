@@ -10,14 +10,18 @@ int main()
     Greetings();
     Nvalues Nss;
 
-    if(errorCounts(Nss))
+    if(CountsError(Nss))
         return(0);
 
-    float R[Nss.Nr], l[Nss.Nl];
-    int betta[Nss.Nb];
-    Nss.Input(R,l,betta);
-    SolvedData Data[Nss.Sum()];
+    float* R = new float[Nss.Nr];
+    float* l = new float[Nss.Nl];
+    float* betta = new float[Nss.Nb];
+    Nss.InputAuto(R,l,betta);
+    SolvedData* Data = new SolvedData[Nss.Sum()];
     int n_el = 0;
+    int all = Nss.Nr * Nss.Nl * Nss.Nb;
+
+    std::cout << "Status of progress:" << std::endl;
 
     for (int i = 0; i < Nss.Nr; ++i)
         for (int j = 0; j < Nss.Nl; ++j)
@@ -25,11 +29,14 @@ int main()
             {
                 ++n_el;
                 startEvaluate(R[i],l[j],betta[k], &Data[n_el]);
-                outputConsole(Data[n_el]);
-                outputFile(Data[n_el], R[i], l[j], betta[k]);
+                ShowProgress(Percent(all, n_el));
             }
 
+    ChangeOutputInFile(Nss, Data, R, l, betta);
 
+    delete [] R;
+    delete [] l;
+    delete [] betta;
 
     WaitingEnter();
     return 0;

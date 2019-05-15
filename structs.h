@@ -16,7 +16,8 @@ struct Nvalues
     int Nl;
     int Nb;
     Nvalues();
-    void Input(float *R, float *l, int *betta);
+    void Input(float *R, float *l, float *betta);
+    void InputAuto(float *R, float *l, float *betta); //spec_func
     int Sum();
 };
 
@@ -30,9 +31,8 @@ Nvalues::Nvalues()
     std::cin >> this->Nb;
 };
 
-void Nvalues::Input(float *R, float *l, int *betta)
+void Nvalues::Input(float *R, float *l, float *betta)
 {
-    //int R[Nss.Nr], l[Nss.Nl], betta[Nss.Nb];
     std::cout << "Please, input your " << this->Nr << " values for R" << std::endl;
     for (int i = 0; i < this->Nr; ++i)
     {
@@ -51,6 +51,24 @@ void Nvalues::Input(float *R, float *l, int *betta)
         std::cout << i+1 << ":       _:";
         std::cin >> betta[i];
     }
+};
+
+//spec_func
+void Nvalues::InputAuto(float *R, float *l, float *betta)
+{
+    for (int i = 0; i < this->Nr; ++i)
+    {
+        R[i] = i;
+    }
+    for (int i = 0; i < this->Nl; ++i)
+    {
+        l[i] = i;
+    }
+    for (int i = 0; i < this->Nb; ++i)
+    {
+        betta[i] = i;
+    }
+    std::cout << "All values added" << std::endl;
 };
 
 int Nvalues::Sum()
