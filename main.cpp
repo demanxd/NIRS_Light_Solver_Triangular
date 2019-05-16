@@ -16,7 +16,8 @@ int main()
     float* R = new float[Nss.Nr];
     float* l = new float[Nss.Nl];
     float* betta = new float[Nss.Nb];
-    Nss.InputAuto(R,l,betta);
+    Nss.Input(R,l,betta);
+
     SolvedData* Data = new SolvedData[Nss.Sum()];
     int n_el = 0;
     int all = Nss.Nr * Nss.Nl * Nss.Nb;

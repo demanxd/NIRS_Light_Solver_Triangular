@@ -44,7 +44,7 @@ void Greetings()
     std::cout << "Programm for solving field of triangular antennas parameters" << std::endl;
     for (int i = 0; i < 29; ++i)
         std::cout << " ";
-    std::cout << "Version 1.04" <<std::endl;
+    std::cout << "Version 1.05" <<std::endl;
     for (int i = 0; i < 27; ++i)
         std::cout << " ";
     std::cout << "You are welcome!" << std::endl;

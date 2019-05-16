@@ -84,6 +84,11 @@ float E2(float R, float l,float betta)
 {
     return ( tan((betta * tacos)/2) );
 };
+///H block
+float H(float E)
+{
+    return E/w;
+}
 
 ///evaluate tau
 void evalTau(float R, float l,float betta, SolvedData *Data)
@@ -107,11 +112,19 @@ void evalE(float R, float l,float betta, SolvedData *Data)
     Data->E[5] = E2(R, l, betta);
 };
 
+///evaluate H
+void evalH(SolvedData *Data)
+{
+    for (int i = 0; i < 6; ++i)
+        Data->H[i] = H(Data->E[i]);
+}
+
 ///evaluate start
 void startEvaluate(float R, float l,float betta, SolvedData *Data)
 {
     evalTau(R, l, betta, Data);
     evalE(R, l, betta, Data);
+    evalH(Data);
 };
 
 #endif // MATH_FUNC_H_INCLUDED

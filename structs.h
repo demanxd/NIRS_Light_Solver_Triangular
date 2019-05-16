@@ -17,7 +17,7 @@ struct Nvalues
     int Nb;
     Nvalues();
     void Input(float *R, float *l, float *betta);
-    void InputAuto(float *R, float *l, float *betta); //spec_func
+    void InputAuto(float *R, float *l, float *betta); //spec_func only for test
     int Sum();
 };
 
@@ -53,7 +53,7 @@ void Nvalues::Input(float *R, float *l, float *betta)
     }
 };
 
-//spec_func
+//spec_func only for test
 void Nvalues::InputAuto(float *R, float *l, float *betta)
 {
     for (int i = 0; i < this->Nr; ++i)
