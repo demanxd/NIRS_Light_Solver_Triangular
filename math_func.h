@@ -99,23 +99,38 @@ void evalTau(float R, float l,float betta, SolvedData *Data)
     Data->tau[3] = t11(R, l, betta);
     Data->tau[4] = t20(R, l, betta);
     Data->tau[5] = t21(R, l, betta);
+
+    Data->FindMin();
+
+    Data->tau[10] = Data->tau[5] + Data->min_tau + l / c;
+    Data->tau[11] = Data->tau[10] * 2;
+    Data->tau[8] = Data->tau[4] + Data->min_tau + l / c;
+    Data->tau[9] = Data->tau[8] * 2;
+    Data->tau[6] = Data->tau[3] + Data->min_tau + l / c;
+    Data->tau[7] = Data->tau[6] * 2;
+    Data->tau[4] = Data->tau[2] + Data->min_tau + l / c;
+    Data->tau[5] = Data->tau[4] * 2;
+    Data->tau[2] = Data->tau[1] + Data->min_tau + l / c;
+    Data->tau[3] = Data->tau[2] * 2;
+    Data->tau[0] = Data->tau[0] + Data->min_tau + l / c;
+    Data->tau[1] = Data->tau[0] * 2;
 };
 
 ///evaluate E
 void evalE(float R, float l,float betta, SolvedData *Data)
 {
-    Data->E[0] = E0(R, l, betta);
-    Data->E[1] = E0(R, l, betta);
-    Data->E[2] = E1(R, l, betta);
-    Data->E[3] = E1(R, l, betta);
-    Data->E[4] = E2(R, l, betta);
-    Data->E[5] = E2(R, l, betta);
+    Data->E[0] = Data->E[1] = E0(R, l, betta);
+    Data->E[2] = Data->E[3] = E0(R, l, betta);
+    Data->E[4] = Data->E[5] = E1(R, l, betta);
+    Data->E[6] = Data->E[7] = E1(R, l, betta);
+    Data->E[8] = Data->E[9] = E2(R, l, betta);
+    Data->E[10] = Data->E[11] = E2(R, l, betta);
 };
 
 ///evaluate H
 void evalH(SolvedData *Data)
 {
-    for (int i = 0; i < 6; ++i)
+    for (int i = 0; i < 12; ++i)
         Data->H[i] = H(Data->E[i]);
 }
 

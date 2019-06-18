@@ -4,10 +4,22 @@
 
 struct SolvedData
 {
-    float tau[6];
-    float E[6];
-    float H[6] = {0,0,0,0,0,0};
+    float min_tau;
+    float tau[12] = {0};
+    float E[12] = {0};
+    float H[12] = {0};
+    void FindMin();
 };
+
+void SolvedData::FindMin()
+{
+    min_tau = this->tau[0];
+    for (int i = 0; i < 12; ++i)
+        if (min_tau < this->tau[i])
+            min_tau = this->tau[i];
+}
+
+
 
 
 struct Nvalues
@@ -20,6 +32,16 @@ struct Nvalues
     void InputAuto(float *R, float *l, float *betta); //spec_func only for test
     int Sum();
 };
+
+
+/*struct inputData
+{
+    Nvalues val;
+//    int R[val->Nr];
+//    int l[val->Nl];
+//    int betta[val->Nb];
+}*/
+
 
 Nvalues::Nvalues()
 {
@@ -58,15 +80,15 @@ void Nvalues::InputAuto(float *R, float *l, float *betta)
 {
     for (int i = 0; i < this->Nr; ++i)
     {
-        R[i] = i;
+        R[i] = i+1;
     }
     for (int i = 0; i < this->Nl; ++i)
     {
-        l[i] = i;
+        l[i] = i+1;
     }
     for (int i = 0; i < this->Nb; ++i)
     {
-        betta[i] = i;
+        betta[i] = i+1;
     }
     std::cout << "All values added" << std::endl;
 };

@@ -16,9 +16,13 @@ int main()
     float* R = new float[Nss.Nr];
     float* l = new float[Nss.Nl];
     float* betta = new float[Nss.Nb];
-    Nss.Input(R,l,betta);
+    Nss.InputAuto(R,l,betta);
 
     SolvedData* Data = new SolvedData[Nss.Sum()];
+    //std::cout << "Size of Nvalues:" << sizeof(Nvalues) << std::endl;
+
+    //std::cout << "Size of SolvedData:" << sizeof(SolvedData) << std::endl;
+
     int n_el = 0;
     int all = Nss.Nr * Nss.Nl * Nss.Nb;
 
